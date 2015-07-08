@@ -3,16 +3,16 @@
 //Código em javascript para retornar as cidades de acordo com o estado selecionado
 
 
-//Devemos inicialmente criar 28 vetores, a posição 0 serve apenas para não iniciarmos em nenhum estado e nenhuma cidade
-//a partir da posição 1 do vetor criado colocamos todas as cidades de acordo com os valores do combobox que contém os estados.
+//Devemos inicialmente criar uma matriz com 28 vetores, a posição 0 serve apenas para não iniciarmos em nenhum estado e nenhuma cidade
+//a partir da posição 1 da matriz criada colocamos todas as cidades de acordo com os valores do combobox que contém os estados.
 
 //Por exemplo 
 //<select>
 //     <option value="1">Acre</option>
 //</select>
-//O valor de cada opção deste combobox representará a posição no vetor de cidades. Portanto na posição 1
+//O valor de cada opção deste combobox representará a posição na matriz de cidades. Portanto na posição 1
 //devemos colocar todas as cidades do Acre, todas entre aspas duplas e separadas por virgula.
-//E assim prossiguirá para todas as posições do array.
+//E assim prossiguirá para todas as posições da matriz.
 
 var arr = new Array();
 	arr[0] = new Array("-------------------------");
@@ -215,7 +215,7 @@ var arr = new Array();
 
 	//Aqui acontece toda a magica, o combobox que contém os estados no index.html chama o evento 'onchange' 
 	//que por sua vez chama a função change(this), função está que está contida logo abaixo,
-	//o combobox chama esta função passando como parametro 'this' qhe seria o valor da opção selecionada do proprio combobox.
+	//o combobox chama esta função passando como parametro 'this' qhe seria o valor da opção selecionada do proprio combobox 'estados'.
 	//
 	//Ou seja, se selecionarmos <option value="1">Acre</option> a função change(this) será chamada passando como argumento o valor 1.
 
@@ -227,18 +227,17 @@ var arr = new Array();
 		   //Até ai tudo bem, mas antes de "devolvermos" as cidades para o segundo combobox, este combobox deve ser inicializado
 		   //na primeira vez dará tudo certo, mas apartir da segunda as cidades anteriores permanecerão e serão adicionadas as cidades novas.
 		   
-		   
 		   document.forms["form1"].elements["cidades"].options.length=0;//Portanto devemos setar o "tamanho" inicial do combobox de cidades como 0, pois
 																	   //antes de devolver as cidades devemos retirar todas as opções anteriores.	   
 		   //Aqui criamos as "options" no combobox de cidades uma a uma, 
 		   //iniciamos a partir de 0 (primeira cidade) e vamos até a ultima cidade
 		   //Portanto a função só sairá deste laço quando o mesmo passar por todas as cidades da posição selecionada.
 		   
-		   //arr[comboValue].length = tamanho do laço
+		   //arr[comboValue].length = tamanho do vetor na matriz selecionada
 		   //comboValue = parametro que conseguimos na hora de selecionar uma opção de estado
-		   //OBS: este parametro será a mesma posição a ser selecionada do vetor 'arr'. 
+		   //OBS: este parametro será a mesma posição a ser selecionada da matriz 'arr'. 
 		   
-		   //Por tanto o laço irá de 0 até o tamanho do vetor na posição selecionada "comboValue"
+		   //Por tanto o laço irá de 0 até o tamanho do vetor na posição selecionada da matriz 'arr'
 		   for(var i =0; i<arr[comboValue].length;i++)
 		   {
 			   
